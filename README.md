@@ -28,7 +28,7 @@ Any real function can be extended to the dual numbers.To see this, we can employ
 
 $$f(x) = \sum_{k=0}^{\infty}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$$
 
-As we are interested in the behavior of a real function extendend by the dual numbers, we set $x=x_0+b\epsilon$ with $x_0=a$.
+We are interested in the behavior of a real function extendend by dual numbers. Therefore, we set $x=x_0+b\epsilon$ with $x_0=a$.
 
 $$f(x) = \sum_{k=0}^{\infty}\frac{f^{(k)}(a)}{k!}(b\epsilon)^k$$
 
