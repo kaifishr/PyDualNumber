@@ -144,7 +144,15 @@ python -m examples.gradient_descent
 Run the following command to install this package in your environment:
 
 ```bash
+cd PyDualNumber
 pip install .
+```
+
+Install required packages to run the example, tests, and to facilitate development according to clean code principles:
+
+```bash
+cd PyDualNumber
+pip install -r requirements.txt
 ```
 
 

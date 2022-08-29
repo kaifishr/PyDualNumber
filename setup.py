@@ -9,12 +9,13 @@ with open('LICENSE') as f:
 
 setup(
     name="PyDualNumber",
-    version="1.0.0",
+    version="0.1.0",
     description="A basic implementation of dual numbers in Python.",
     long_description=readme,
     author="Kai Fischer",
     author_email="kai.fabi@posteo.net",
     url='https://github.com/KaiFabi/PyDualNumber',
+    test_suite="tests",
     license=license,
-    packages=find_packages(exclude=('docs'))
+    packages=find_packages(),
 )

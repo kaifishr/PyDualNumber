@@ -1,5 +1,6 @@
-mypy
-pylint
 black
 flake8
+mypy
+numpy
+pylint
 pytest

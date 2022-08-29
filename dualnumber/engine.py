@@ -184,7 +184,6 @@ class Dual:
         Raises:
             Error if dual number in denominator is zero.
         """
-        print("truediv")
         assert other.real != 0, f"Real part of denominator must be nonnegative."
         other = other if isinstance(other, Dual) else Dual(real=other)
         real = self.real / other.real
@@ -193,10 +192,7 @@ class Dual:
 
     def __rtruediv__(self, other: Union[float, int]) -> Dual:
         r"""Reverse division.
-
-        TODO: Check this.
         """
-        print("rtruediv")
         return Dual(real=other) / self
 
     def __neg__(self) -> Dual:
