@@ -86,9 +86,7 @@ $$f(a+b\epsilon, c+d\epsilon) = f(a, c) + \partial_x f(a, c)b\epsilon + \partial
 
 Now we have everything to extend $f(x, y) = x^y$ to dual numbers:
 
-$$\begin{aligned}
-f(a+b\epsilon, c+d\epsilon) &= a^c + (ca^{c-1}b + a^c\ln(a)d)\epsilon \\ &= a^c + a^c(\frac{b}{a}c + \ln(a)d)\epsilon
-\end{aligned}$$
+$$f(a+b\epsilon, c+d\epsilon) = a^c + (ca^{c-1}b + a^c\ln(a)d)\epsilon \\ = a^c + a^c(\frac{b}{a}c + \ln(a)d)\epsilon$$
 
 Thus, for the actual implementation in Python, the following cases for exponentiation involving dual numbers are of interest.
 
@@ -134,7 +132,7 @@ Dual numbers are great for automatic differentiation. Here is a toy example show
 Run the example
 
 ```bash
-cd dual_number
+cd PyDualNumber
 python -m examples.gradient_descent
 ```
 
@@ -160,7 +158,7 @@ pip install -r requirements.txt
 Run the tests by executing:
 
 ```bash
-cd dual_number
+cd PyDualNumber
 pytest dual_number
 ```
 
