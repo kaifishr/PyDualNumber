@@ -1,7 +1,7 @@
 """Tests for dual number eninge."""
 import math
-import pytest
 from dualnumber.engine import Dual
+
 
 def test_unary_minus():
     """Tests unary minus operator."""

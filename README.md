@@ -1,14 +1,15 @@
 # PyDualNumber
 
-**Work in progress.**
+This project provides a basic implementation of dual numbers in Python with an example application of dual numbers for automatic differentiation. Possibly interesting for educational purposes.
 
-This project provides a basic implementation of dual numbers in Python. Possibly interesting for educational purposes.
+**Work in progress.**
 
 ## Dual Numbers
 
 The [dual numbers system](https://en.wikipedia.org/wiki/Dual_number) was introduced 1873 by the English mathematician [William Clifford](https://en.wikipedia.org/wiki/William_Kingdon_Clifford).
 
 Dual numbers are of the form $x = a + b \epsilon$, where $a$ and $b$ are real numbers, and $\epsilon$ for which the property $\epsilon^2 = 0$ holds.
+
 
 ### Arithmetic Operations
 
@@ -20,6 +21,7 @@ The arithmetic operations for dual numbers are defined as follows.
 | Subtraction  | $$(a + b \epsilon) - (c + d \epsilon) = (a - c) + (b - d) \epsilon$$ |
 | Multiplication | $$(a + b \epsilon) (c + d \epsilon) = a c + (a d + b c) \epsilon$$ |
 | Division | $$\frac{a + b \epsilon}{c + d \epsilon} = \frac{a}{c} + \frac{b c - a d}{c^2} \epsilon$$ |
+
 
 ### Differentiation
 
@@ -47,6 +49,7 @@ We can use this expression to extend functions such as hyperbolic or power funct
 | $\exp(x)$ | $\exp(a) + \exp(a)b\epsilon$ |
 | $\ln(x)$ | $\ln(a) + \frac{1}{a}b\epsilon$ |
 
+
 ### Rectified Liner Unit Activation Function (ReLU)
 
 We can also extend activation functions such as $\text{ReLU}(x)$ for dual numbers. The definition for the $\text{ReLU}$ activation functions is given by
@@ -68,6 +71,7 @@ $$
         0 & \text{else}
     \end{cases}       
 $$
+
 
 ### Exponentiation
 
@@ -97,7 +101,30 @@ Thus, for the actual implementation in Python, the following cases for exponenti
 
 As you can see, this expression can also be used to compute quantities where $x$ or $y$ are just real numbers.
 
+
 ## Examples
+
+
+### Example usage
+
+```python
+from dualnumber import Dual
+
+d1 = Dual(1, 2)
+d2 = Dual(3, 4)
+d3 = d1 + d2
+d4 = d3 - d2
+d5 = d4 * d3
+d6 = d5 / d4
+d7 = d6.sin()
+d8 = d7.cos()
+d9 = d9.tanh()
+d10 = d9.ln()
+d11 = d10.exp()
+d12 = d11**d10
+d12 = d11.relu()
+```
+
 
 ### Automatic Differentiation with Dual Numbers
 
@@ -112,6 +139,14 @@ cd dual_number
 python -m examples.gradient_descent
 ```
 
+## Installation
+
+Run the following command to install this package in your environment:
+
+```bash
+pip install .
+```
+
 
 ## Tests
 
@@ -124,7 +159,8 @@ pytest dual_number
 
 ## Clean Code
 
-Good practices for software developement in Python.
+Some good practices for software developement in Python.
+
 
 ### Checking type consistency
 
@@ -166,6 +202,7 @@ Or run `pylint` with a customiced pylintrc file:
 pylint --rcfile dual_number/pylintrc dual_number
 ```
 
+
 ### Automatic Formatting
 
 This project uses `flake8` and `black` for automatic formatting.
@@ -186,6 +223,7 @@ black --check dual_number
 
 Remove the `--check` flag to perform automatic formatting changes.
 
+
 ### Automatic Checks
 
 Instead of running all checks manually we can make use of Makefiles to run them all automatically. Run the following command in the root folder:
@@ -202,7 +240,10 @@ cd dual_number
 make --ignore-errors check  # or: make -i check
 ```
 
+
 ## Citation
+
+If you find this content useful, please cite the following:
 
 ```bibtex
 @misc{KaiFischer2022pdn,
@@ -219,7 +260,7 @@ make --ignore-errors check  # or: make -i check
 
 MIT
 
+
 # TODOs
 
-- Add conjugated unit.
-
+- Add documentation.

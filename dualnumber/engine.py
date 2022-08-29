@@ -1,6 +1,6 @@
 """A class for dual numbers.
 
-More information about this dual numbers class.
+Basic implementation of dual numbers in Python.
 
     Typical usage example:
 
