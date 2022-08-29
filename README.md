@@ -2,7 +2,6 @@
 
 This project provides a basic implementation of dual numbers in Python with an example application of dual numbers for automatic differentiation. Possibly interesting for educational purposes.
 
-**Work in progress.**
 
 ## Dual Numbers
 
@@ -271,4 +270,5 @@ MIT
 
 # TODOs
 
+- Refactor code.
 - Add documentation.
