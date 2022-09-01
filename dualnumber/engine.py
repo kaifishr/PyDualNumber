@@ -65,7 +65,7 @@ class Dual:
 
     def log(self) -> Dual:
         r"""Implements logarithm for dual number."""
-        assert self.real != 0, f"Real part of denominator must be nonnegative."
+        assert self.real != 0, "Real part of denominator must be nonnegative."
         real = log(self.real)
         dual = self.dual / self.real
         return Dual(real=real, dual=dual)
@@ -82,7 +82,8 @@ class Dual:
 
     def __pow__(self, power: Union[Dual, float, int]) -> Dual:
         r"""Implements power operator for dual number."""
-        assert self.real != 0, f"Real part of denominator must be nonnegative."
+        assert self.real != 0, "Real part of denominator must be nonnegative."
+
         if isinstance(power, Dual):
             other = power
             real = self.real**other.real
@@ -90,10 +91,10 @@ class Dual:
                 (self.dual / self.real) * other.real + log(self.real) * other.dual
             )
             return Dual(real=real, dual=dual)
-        else:
-            real = self.real**power
-            dual = real * (self.dual / self.real) * power
-            return Dual(real=real, dual=dual)
+
+        real = self.real**power
+        dual = real * (self.dual / self.real) * power
+        return Dual(real=real, dual=dual)
 
     def __rpow__(self, other: Union[float, int]) -> Dual:
         r"""Implements reverse power operator for dual number."""
@@ -175,7 +176,8 @@ class Dual:
         The division of dual numbers is given by:
 
         .. math::
-            \frac{a + \epsilon b}{c + \epsilon d} = \frac{a}{c} + \epsilon \frac{b \cdot c - a \cdot d}{c^2}
+            \frac{a + \epsilon b}{c + \epsilon d}
+            = \frac{a}{c} + \epsilon \frac{b \cdot c - a \cdot d}{c^2}
         Args:
             self: A dual number instance.
             other: A dual number instance.
@@ -186,7 +188,7 @@ class Dual:
         Raises:
             Error if dual number in denominator is zero.
         """
-        assert other.real != 0, f"Real part of denominator must be nonnegative."
+        assert other.real != 0, "Real part of denominator must be nonnegative."
         other = other if isinstance(other, Dual) else Dual(real=other)
         real = self.real / other.real
         dual = (self.dual * other.real - self.real * other.dual) / (
@@ -242,7 +244,8 @@ class Dual:
 
     def abs(self) -> Dual:
         r"""Computes absolute value."""
-        return self.__abs__()
+        # return self.__abs__()
+        return abs(self)
 
     def __str__(self) -> str:
         return f"({self.real}, {self.dual})"
