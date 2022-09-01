@@ -21,7 +21,7 @@ Basic implementation of dual numbers in Python.
 from __future__ import annotations
 from typing import Union
 
-from math import cos, sin, tanh, exp, log 
+from math import cos, sin, tanh, exp, log
 
 
 class Dual:
@@ -42,19 +42,19 @@ class Dual:
     def sin(self) -> Dual:
         r"""Implements sine for dual number."""
         real = sin(self.real)
-        dual = cos(self.real)*self.dual
+        dual = cos(self.real) * self.dual
         return Dual(real=real, dual=dual)
 
     def cos(self) -> Dual:
         r"""Implements cosine for dual number."""
         real = cos(self.real)
-        dual = -sin(self.real)*self.dual
+        dual = -sin(self.real) * self.dual
         return Dual(real=real, dual=dual)
 
     def tanh(self) -> Dual:
         r"""Implements tangens hyperbolicus for dual number."""
         real = tanh(self.real)
-        dual = (1.0 - real**2)*self.dual
+        dual = (1.0 - real**2) * self.dual
         return Dual(real=real, dual=dual)
 
     def exp(self) -> Dual:
@@ -86,11 +86,13 @@ class Dual:
         if isinstance(power, Dual):
             other = power
             real = self.real**other.real
-            dual = real * ((self.dual/self.real)*other.real + log(self.real)*other.dual)
+            dual = real * (
+                (self.dual / self.real) * other.real + log(self.real) * other.dual
+            )
             return Dual(real=real, dual=dual)
         else:
             real = self.real**power
-            dual = real * (self.dual/self.real)*power
+            dual = real * (self.dual / self.real) * power
             return Dual(real=real, dual=dual)
 
     def __rpow__(self, other: Union[float, int]) -> Dual:
@@ -187,12 +189,13 @@ class Dual:
         assert other.real != 0, f"Real part of denominator must be nonnegative."
         other = other if isinstance(other, Dual) else Dual(real=other)
         real = self.real / other.real
-        dual = (self.dual * other.real - self.real * other.dual) / (other.real * other.real)
+        dual = (self.dual * other.real - self.real * other.dual) / (
+            other.real * other.real
+        )
         return Dual(real=real, dual=dual)
 
     def __rtruediv__(self, other: Union[float, int]) -> Dual:
-        r"""Reverse division.
-        """
+        r"""Reverse division."""
         return Dual(real=other) / self
 
     def __neg__(self) -> Dual:
@@ -208,15 +211,15 @@ class Dual:
         return self.real <= other.real
 
     def __eq__(self, other: Dual) -> bool:
-        r"""Implements 'equals' (=) operator.    
+        r"""Implements 'equals' (=) operator.
 
         Dual numbers are equal if their real parts are equal.
         """
         return self.real == other.real
 
     def __ne__(self, other: Dual) -> bool:
-        r"""Implements 'not equals' (!=) operator.    
-        
+        r"""Implements 'not equals' (!=) operator.
+
         Dual numbers are inequal if their real parts are inequal.
         """
         return not self.__eq__(other)

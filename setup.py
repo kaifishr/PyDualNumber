@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 
-with open('README.md') as f:
+with open("README.md") as f:
     readme = f.read()
 
-with open('LICENSE') as f:
+with open("LICENSE") as f:
     license = f.read()
 
 setup(
@@ -14,7 +14,7 @@ setup(
     long_description=readme,
     author="Kai Fischer",
     author_email="kai.fabi@posteo.net",
-    url='https://github.com/KaiFabi/PyDualNumber',
+    url="https://github.com/KaiFabi/PyDualNumber",
     test_suite="tests",
     license=license,
     packages=find_packages(),

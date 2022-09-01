@@ -57,7 +57,9 @@ def main():
 
     lrs = [0.01, 0.2, 0.4, 0.8]
     for lr, ax in zip(lrs, axes.flatten()):
-        x_hist = gradient_descent(x=x_init, n_steps=n_steps, lr=lr, keep_every=keep_every_n)
+        x_hist = gradient_descent(
+            x=x_init, n_steps=n_steps, lr=lr, keep_every=keep_every_n
+        )
         ax.plot(x_hist, f(x_hist), "r--", linewidth=0.5)
         ax.plot(x_hist, f(x_hist), "ro", markersize=2.0, label=f"lr = {lr}")
         ax.legend()
@@ -69,5 +71,5 @@ def main():
     plt.close(fig)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -77,11 +77,11 @@ def test_div():
 
     out = 11 / d1
     assert out.real == 11 / 2
-    assert out.dual == -(11*(-3))/(2**2)
+    assert out.dual == -(11 * (-3)) / (2**2)
 
     out = d1 / d2
     assert out.real == 2 / -5
-    assert out.dual == ((-3)*(-5)-2*7) / (-5)**2
+    assert out.dual == ((-3) * (-5) - 2 * 7) / (-5) ** 2
 
 
 def test_pow():
@@ -95,11 +95,11 @@ def test_pow():
 
     out = 2**d1
     assert out.real == 2**2
-    assert out.dual == (2**2)*math.log(2)*(-3)
+    assert out.dual == (2**2) * math.log(2) * (-3)
 
     out = d1**d2
-    assert out.real == 2**(-5)
-    assert out.dual == 2**(-5) * (((-3)/2)*(-5) + math.log(2)*7)
+    assert out.real == 2 ** (-5)
+    assert out.dual == 2 ** (-5) * (((-3) / 2) * (-5) + math.log(2) * 7)
 
 
 def test_sin():
@@ -108,7 +108,7 @@ def test_sin():
 
     out = d.sin()
     assert out.real == math.sin(2)
-    assert out.dual == math.cos(2)*(-3)
+    assert out.dual == math.cos(2) * (-3)
 
 
 def test_cos():
@@ -117,7 +117,7 @@ def test_cos():
 
     out = d.cos()
     assert out.real == math.cos(2)
-    assert out.dual == -math.sin(2)*(-3)
+    assert out.dual == -math.sin(2) * (-3)
 
 
 def test_tanh():
@@ -126,7 +126,7 @@ def test_tanh():
 
     out = d.tanh()
     assert out.real == math.tanh(2)
-    assert out.dual == (1.0 - math.tanh(2)**2)*(-3)
+    assert out.dual == (1.0 - math.tanh(2) ** 2) * (-3)
 
 
 def test_exp():
@@ -135,7 +135,7 @@ def test_exp():
 
     out = d.exp()
     assert out.real == math.exp(2)
-    assert out.dual == math.exp(2)*(-3)
+    assert out.dual == math.exp(2) * (-3)
 
 
 def test_log():
@@ -144,7 +144,7 @@ def test_log():
 
     out = d.log()
     assert out.real == math.log(2)
-    assert out.dual == (1/2)*(-3)
+    assert out.dual == (1 / 2) * (-3)
 
 
 def test_relu():
@@ -179,6 +179,7 @@ def test_less_than_or_equal():
     out = d1 <= d2
     assert out == False
 
+
 def test_equals():
     """Tests equals operator for dual numbers."""
     d1 = Dual(2, -3)
@@ -187,13 +188,14 @@ def test_equals():
     out = d1 == d2
     assert out == False
 
+
 def test_not_equals():
     """Tests not equals operator for dual numbers."""
     d1 = Dual(2, -3)
     d2 = Dual(-5, 7)
 
     out = d1 != d2
-    assert out == True 
+    assert out == True
 
 
 def test_greater_than():
@@ -202,7 +204,7 @@ def test_greater_than():
     d2 = Dual(-5, 7)
 
     out = d1 > d2
-    assert out == True 
+    assert out == True
 
 
 def test_less_greater_or_equal():
@@ -211,7 +213,7 @@ def test_less_greater_or_equal():
     d2 = Dual(-5, 7)
 
     out = d1 >= d2
-    assert out == True 
+    assert out == True
 
 
 def test_abs():
@@ -225,7 +227,6 @@ def test_abs():
     out = d.abs()
     assert out.real == 2
     assert out.dual == 0
-
 
 
 def test_conjugate():
