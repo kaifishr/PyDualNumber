@@ -197,7 +197,7 @@ class Dual:
         )
         return Dual(real=real, dual=dual)
 
-    def __rtruediv__(self, other: Union[float]) -> Dual:
+    def __rtruediv__(self, other: float) -> Dual:
         r"""Reverse division."""
         return Dual(real=other) / self
 

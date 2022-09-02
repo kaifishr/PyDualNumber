@@ -264,9 +264,3 @@ If you find this content useful, please cite the following:
 ## Licence
 
 MIT
-
-
-# TODOs
-
-- Refactor code.
-- Add documentation.
