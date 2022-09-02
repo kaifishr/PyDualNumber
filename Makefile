@@ -3,7 +3,7 @@
 # The build will automatically fail, if at least one check fails.
 .PHONY: black
 black:
-	black --check dualnumber/
+	black dualnumber/
 
 .PHONY: lint
 lint:

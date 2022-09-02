@@ -36,8 +36,8 @@ class Dual:
     """
 
     def __init__(self, real: Union[float, int], dual: Union[float, int] = 0.0) -> None:
-        self.real = real
-        self.dual = dual
+        self.real = float(real)
+        self.dual = float(dual)
 
     def sin(self) -> Dual:
         r"""Implements sine for dual number."""
@@ -100,10 +100,9 @@ class Dual:
         r"""Implements reverse power operator for dual number."""
         # other is the base here without dual part
         assert other > 0, f"Base must be nonnegative but is {other}"
-        other = Dual(real=other)
-        return other**self
+        return Dual(real=other) ** self
 
-    def __add__(self, other: Dual) -> Dual:
+    def __add__(self, other: Union[Dual, float, int]) -> Dual:
         r"""Adds two dual numbers.
 
         The addition of dual numbers is implemented as follows:
@@ -119,13 +118,15 @@ class Dual:
             A dual number.
         """
         other = other if isinstance(other, Dual) else Dual(real=other)
-        return Dual(self.real + other.real, self.dual + other.dual)
+        real = self.real + other.real
+        dual = self.dual + other.dual
+        return Dual(real=real, dual=dual)
 
     def __radd__(self, other: Dual) -> Dual:
         r"""Implements reverse addition."""
         return self + other
 
-    def __sub__(self, other: Dual) -> Dual:
+    def __sub__(self, other: Union[Dual, float, int]) -> Dual:
         r"""Subtracts two dual numbers.
 
         The subtraction of dual numbers is implemented as follows:
@@ -147,7 +148,7 @@ class Dual:
         r"""Implements reverse subtraction."""
         return other + (-self)
 
-    def __mul__(self, other: Dual) -> Dual:
+    def __mul__(self, other: Union[Dual, float, int]) -> Dual:
         r"""Multiplies two dual numbers.
 
         The multiplication of dual numbers is implemented as follows:
@@ -170,7 +171,7 @@ class Dual:
     def __rmul__(self, other: Dual) -> Dual:
         return self * other
 
-    def __truediv__(self, other: Dual) -> Dual:
+    def __truediv__(self, other: Union[Dual, float, int]) -> Dual:
         r"""Divides two dual numbers.
 
         The division of dual numbers is given by:
@@ -196,7 +197,7 @@ class Dual:
         )
         return Dual(real=real, dual=dual)
 
-    def __rtruediv__(self, other: Union[float, int]) -> Dual:
+    def __rtruediv__(self, other: Union[float]) -> Dual:
         r"""Reverse division."""
         return Dual(real=other) / self
 
@@ -212,18 +213,28 @@ class Dual:
         r"""Implements 'less than or equal' (<=) operator."""
         return self.real <= other.real
 
-    def __eq__(self, other: Dual) -> bool:
+    def __eq__(self, other: object) -> bool:
         r"""Implements 'equals' (=) operator.
 
         Dual numbers are equal if their real parts are equal.
+
+        Here type of 'other' is declared as 'object' to
+        fulfill Liskov substitution principle.
         """
+        if not isinstance(other, Dual):
+            return NotImplemented
         return self.real == other.real
 
-    def __ne__(self, other: Dual) -> bool:
+    def __ne__(self, other: object) -> bool:
         r"""Implements 'not equals' (!=) operator.
 
         Dual numbers are inequal if their real parts are inequal.
+
+        Here type of 'other' is declared as 'object' to
+        fulfill Liskov substitution principle.
         """
+        if not isinstance(other, Dual):
+            return NotImplemented
         return not self.__eq__(other)
 
     def __ge__(self, other: Dual) -> bool:
