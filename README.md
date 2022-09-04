@@ -257,7 +257,7 @@ If you find this content useful, please cite the following:
   year = {2022},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/kaifabi/python-dual-number}},
+  howpublished = {\url{https://github.com/kaifishr/PyDualNumber}},
 }
 ```
 
